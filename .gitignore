@@ -1,0 +1,42 @@
+.venv/
+__pycache__/
+*.py[cod]
+
+# Local drafts and research material
+.local_drafts/
+drafts/
+research_notes/
+experimental_data/
+templates/
+*.csv
+*.tsv
+*.xlsx
+*.json
+*.pkl
+*.pickle
+*.pptx
+*.zip
+
+# Common local note files, without ignoring project documentation
+*_notes.txt
+*_notes.md
+
+# Credentials and secrets
+.env
+.env.*
+*.secret
+*.secrets
+*.key
+*.pem
+*.p12
+*.pfx
+credentials/
+secrets/
+
+# Local model files
+models/
+checkpoints/
+*.gguf
+*.safetensors
+*.onnx
+*.bin

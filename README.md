@@ -1,10 +1,48 @@
 # Weekly Research Update Generator — V2.6.1
 
-Private, local-first Streamlit app to organize multiple research projects into editable PowerPoint slides.
+A local-first Streamlit application that turns research notes into structured, editable PowerPoint presentations. Developed to reduce repetitive scientific reporting while keeping researchers in control of experimental evidence and interpretation.
+
+**Project status:** actively developed. The source code is public; research notes, experimental datasets, local drafts, and reference presentations should remain local and confidential.
+
+## Highlights
+
+- Multi-project management and bilingual heading-based note organization.
+- Editable PowerPoint export with deterministic slide planning and preview.
+- Optional local Ollama integration for scientific language editing.
+- Measurement consistency warnings and human approval before applying AI proposals.
+- Local draft persistence; no remote AI fallback in the documented workflow.
+
+## Architecture
+
+```mermaid
+flowchart TD
+    A[Research notes] --> B[Heading parser]
+    B --> C[Editable project sections]
+    A --> D[Optional local Ollama editor]
+    D --> E[Measurement checks]
+    E --> F[Human review]
+    F --> C
+    C --> G[Deterministic slide planner]
+    G --> H[Preview and editable PPTX]
+```
+
+## Synthetic example
+
+Paste the following fictional notes into a new project to explore the heading parser without exposing research data:
+
+```text
+Objectives: Compare two fictional samples.
+Results: Sample A measured 12 mm; sample B measured 15 mm.
+Next Steps: Repeat the measurements under the same conditions.
+```
+
+Review the organized sections before exporting. These numbers are illustrative, not experimental results.
 
 ## Install & run (Windows PowerShell)
+
+Clone `https://github.com/herminenee/Weekly-Update-Generator.git` first. Local Ollama and the `qwen2.5:3b` model are needed only for optional AI editing.
 ```powershell
-cd weekly_update_generator
+cd Weekly-Update-Generator
 py -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
@@ -13,7 +51,7 @@ streamlit run app.py
 
 Ubuntu:
 ```bash
-cd weekly_update_generator
+cd Weekly-Update-Generator
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -34,6 +72,10 @@ streamlit run app.py
 11. Choose whether to include project divider slides. Dividers are omitted by default in Concise mode.
 12. Review the slide-plan preview.
 13. Click **Generate editable PowerPoint** and download; insert your own figures manually.
+
+## Tests
+
+The repository includes tests for scientific editing, draft loading, scientific writing, and slide composition in `tests/`. Inspect the test files for their requirements and run them in your development environment before relying on changes. Test execution is not claimed by this documentation update.
 
 ## Limitations
 - Conservative heading parser, **not AI-based**; does not rewrite or translate scientific prose.
